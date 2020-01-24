@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import axios from "axios"
 import { connect } from "react-redux"
 
+import SmurfCard from "./SmurfCard"
+
 const SmurfList = props => {
 
   useEffect(() => {
@@ -18,8 +20,7 @@ const SmurfList = props => {
 
   return (
     <div>
-      asdasd
-      
+      <SmurfCard />      
     </div>
   )
 }

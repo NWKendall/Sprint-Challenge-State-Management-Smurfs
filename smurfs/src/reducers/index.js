@@ -1,9 +1,14 @@
-import { SMURFS_ARE_COMING, SMURFS_HAVE_ARRIVED, SMURFS_ARE_LOST } from "../actions";
+import { SMURFS_ARE_COMING, SMURFS_HAVE_ARRIVED, SMURFS_ARE_LOST, NEW_SMURF_In_THE_VILLAGE } from "../actions";
 
 const initialState = {
   isLoading: false,
   error: "",
-  smurfs: []
+  smurfs: [{
+    name: "",
+    age: null,
+    height: null,
+    id: Date.now()
+  }]
 };
 
 export const RootReducer = (state = initialState, action) => {
@@ -25,6 +30,12 @@ export const RootReducer = (state = initialState, action) => {
       isLoading: false,
       smurfs: action.payload
     }
+    case NEW_SMURF_In_THE_VILLAGE:
+      return {
+        ...state,
+        smurfs: [action.payload, ...state.smurfs],
+        isLoading: false
+      }
     default:
       return state
   }

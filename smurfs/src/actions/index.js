@@ -11,11 +11,11 @@ export const whereAreTheSmurfs = () => dispatch => {
   axios
     .get("http://localhost:3333/smurfs")
     .then(res => {      
-      console.log(`this is from useEffect`, res)
+      console.log(`this is from actions`, res)
       dispatch({ type: SMURFS_HAVE_ARRIVED, payload: res.data });
     })
     .catch(err => {
-      console.log(`this is an error from useEffect`, err)
+      console.log(`this is an error from actions`, err)
       dispatch({ type: SMURFS_ARE_LOST, payload: err});
     })
 }

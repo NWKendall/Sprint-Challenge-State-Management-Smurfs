@@ -1,13 +1,12 @@
-import { SMURFS_ARE_COMING, SMURFS_HAVE_ARRIVED, SMURFS_ARE_LOST, NEW_SMURF_In_THE_VILLAGE } from "../actions";
+import { SMURFS_ARE_COMING, SMURFS_HAVE_ARRIVED, SMURFS_ARE_LOST, NEW_SMURF_In_THE_VILLAGE, BYE_BYE_SMURF } from "../actions";
 
 const initialState = {
   isLoading: false,
   error: "",
   smurfs: [{
     name: "",
-    age: null,
-    height: null,
-    id: Date.now()
+    age: "",
+    height: "",
   }]
 };
 
@@ -33,7 +32,13 @@ export const RootReducer = (state = initialState, action) => {
     case NEW_SMURF_In_THE_VILLAGE:
       return {
         ...state,
-        smurfs: [action.payload, ...state.smurfs],
+        smurfs: action.payload, ...state.smurfs,
+        isLoading: false
+      }
+    case BYE_BYE_SMURF:
+      return {
+        ...state,
+        smurfs: state.smurfs.filter(smurf => action.payload !== smurf.id),
         isLoading: false
       }
     default:

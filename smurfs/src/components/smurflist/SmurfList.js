@@ -3,12 +3,14 @@ import { connect } from "react-redux"
 import { whereAreTheSmurfs } from "../../actions"
 
 import SmurfCard from "../smurfcard/SmurfCard"
+import { GridDiv, Button } from "./SmurfList.styled";
 
 const SmurfList = props => {
-
+  console.log(`this is from SmurfList`, props)
   return (
     <div>
-      <button onClick={props.whereAreTheSmurfs}>?</button>
+      <Button onClick={props.whereAreTheSmurfs}>Smurf Village Members</Button>
+      <GridDiv>
       {!props.smurfs && !props.isLoading && (
         <h2>Where could they be...</h2>
       )}
@@ -16,8 +18,9 @@ const SmurfList = props => {
         <h2>There are here somewhere...</h2>
       )}
       {props.smurfs && !props.isLoading && props.smurfs.map(smurf => (
-        <SmurfCard key={smurf.id} smurf={smurf}/>
+        <SmurfCard key={smurf.id} smurf={smurf} />
       ))}
+     </GridDiv>
     </div>
   )
 }

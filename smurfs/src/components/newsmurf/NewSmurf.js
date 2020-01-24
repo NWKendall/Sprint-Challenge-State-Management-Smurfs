@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import axios from "axios"
-import { newSmurf } from "../actions"
+import { connect } from "react-redux";
+import { newSmurf } from "../../actions"
 
-const NewSmurf = () => {
+const NewSmurf = props => {
 
   const [smurfForm, setSmurfForm] = useState({
     name: "",
@@ -16,15 +17,9 @@ const NewSmurf = () => {
       [e.target.name]: e.target.value
     })
   }
-  
-  const onSubmit = e => {
-    e.preventDefault();
-    axios
-      .post("http://localhost:3333/smurfs", smurfForm)
-  }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={() => props.newSmurf(smurfForm)}>
       
       <input 
         type="text"
@@ -37,20 +32,17 @@ const NewSmurf = () => {
         name="age"
         placeholder="how many years old?" 
         onChange={handleChanges}
-
       />
       <input 
         type="number"
         name="height"
         placeholder="how tall?" 
         onChange={handleChanges}
-
       />
-      <button type="submit">Join the village!</button>
-      
+      <button type="submit">Join the village!</button>     
     </form>
   )
 }
 
-export default NewSmurf
+export default connect(null, {newSmurf}) (NewSmurf)
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import SmurfList from "./SmurfList";
-import NewSmurf from "./NewSmurf";
+import SmurfList from "../components/smurflist/SmurfList";
+import NewSmurf from "../components/newsmurf/NewSmurf";
 
 class App extends Component {
   render() {

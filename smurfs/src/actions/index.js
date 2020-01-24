@@ -5,7 +5,6 @@ export const SMURFS_HAVE_ARRIVED = "SMURFS_HAVE_ARRIVED";
 export const SMURFS_ARE_LOST = "SMURFS_ARE_LOST";
 export const NEW_SMURF_In_THE_VILLAGE = "NEW_SMURF_In_THE_VILLAGE";
 
-
 export const whereAreTheSmurfs = () => dispatch => {
   dispatch({ type: SMURFS_ARE_COMING });  
   axios
@@ -21,14 +20,9 @@ export const whereAreTheSmurfs = () => dispatch => {
 }
 
 export const newSmurf = smurf => dispatch => {
-  dispatch({ type: SMURFS_ARE_COMING })
   axios
     .post("http://localhost:3333/smurfs", smurf)
     .then(res => {
       dispatch({ type: NEW_SMURF_In_THE_VILLAGE, payload: res.data.smurf })
-    })
-    .catch(err => {
-      console.log(`village is full!`, err)
-      dispatch({ type: SMURFS_ARE_LOST, payload: err});
-    })
+    })    
 }

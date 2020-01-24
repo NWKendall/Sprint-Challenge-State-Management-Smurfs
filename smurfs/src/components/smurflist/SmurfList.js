@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from "react-redux"
-import { whereAreTheSmurfs } from "../actions"
+import { whereAreTheSmurfs } from "../../actions"
 
-import SmurfCard from "./SmurfCard"
+import SmurfCard from "../smurfcard/SmurfCard"
 
 const SmurfList = props => {
 
